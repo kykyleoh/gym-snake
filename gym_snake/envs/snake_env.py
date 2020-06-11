@@ -13,7 +13,9 @@ class SnakeEnv(gym.Env):
         self.snake_starting_length = snake_length
         self.action_space = spaces.Discrete(4)
        
-    def reset(self):
+    def reset(self, width, height):
+        self.width = width
+        self.height = height
         self.game = PlayGame(self.width, self.height, self.snake_starting_length)
         self.last_state = self.game.get_current_state()
         return self.last_state
